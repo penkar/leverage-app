@@ -8,15 +8,15 @@ import {
   ButtonGroup,
   Element,
   Highlight,
-} from "react-flatifycss";
+} from 'react-flatifycss';
 
-import styled from "styled-components";
-import React from "react";
-import classNames from "classnames";
+import styled from 'styled-components';
+import React from 'react';
+import classNames from 'classnames';
 
-import { type EpisodeType, useEpisodes } from "src/context";
+import { type EpisodeType, useEpisodes } from 'src/context';
 
-const EpisodeWrapper = styled("article")`
+const EpisodeWrapper = styled('article')`
   align-items: flex-start;
   display: flex;
   flex-direction: column;
@@ -76,7 +76,7 @@ export const Episode = ({ eps: episode, last, first }: EpisodeInterface) => {
 
   const scrollToElement = (selector: string) => {
     const element = document.querySelector(selector);
-    if (element) element.scrollIntoView({ behavior: "smooth" });
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleNextClick = () => {
@@ -94,7 +94,7 @@ export const Episode = ({ eps: episode, last, first }: EpisodeInterface) => {
 
   return (
     <EpisodeWrapper
-      className={classNames("card", { "hide-episode": hideEpisode })}
+      className={classNames('card', { 'hide-episode': hideEpisode })}
       id={`episode-${episode.id}`}
     >
       <header className="card-header">
@@ -114,7 +114,7 @@ export const Episode = ({ eps: episode, last, first }: EpisodeInterface) => {
               <Highlight theme="danger-light">Turn:</Highlight>
               &nbsp;
               <span
-                className={hide ? "hide turn" : "turn"}
+                className={hide ? 'hide turn' : 'turn'}
                 onClick={() => setHide((prev) => !prev)}
               >
                 {episode.turn}
@@ -127,7 +127,7 @@ export const Episode = ({ eps: episode, last, first }: EpisodeInterface) => {
               {episode.motive.map((motive) => (
                 <Button
                   size="xs"
-                  theme={filters.has(motive) ? "purple-light" : undefined}
+                  theme={filters.has(motive) ? 'purple-light' : undefined}
                   key={motive}
                   onClick={() => updateEpisodeFilters(motive)}
                   value={motive}
@@ -185,9 +185,9 @@ export const Episode = ({ eps: episode, last, first }: EpisodeInterface) => {
             />
           )}
         </ButtonGroup>
-        <Button as="a" href={episode.link} secondaryText="Watch Now!">
-          Episode {episode.eps}
-        </Button>
+        <a href={episode.link} target="_blank" rel="noopener noreferrer">
+          <Button secondaryText="Watch Now!">Episode {episode.eps}</Button>
+        </a>
       </footer>
     </EpisodeWrapper>
   );
